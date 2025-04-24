@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Hem{% endblock %}
+
+{% block content %}
+    <form action="/add" method="post">
+        <input type="text" name="task" placeholder="Ny uppgift">
+        <button type="submit">Lägg till</button>
+    </form>
+
+    <ul>
+        {% for task in tasks %}
+        <li>
+            <span>
+                {% if task['done'] %}
+                    <s>{{ task['task'] }}</s>
+                {% else %}
+                    {{ task['task'] }}
+                {% endif %}
+            </span>
+            <div class="actions">
+                <a href="/done/{{ task['id'] }}">✔</a>
+                <a href="/edit/{{ task['id'] }}">✏️</a>
+                <a href="/delete/{{ task['id'] }}">🗑️</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

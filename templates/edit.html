@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Hem{% endblock %}
+
+{% block content %}
+    <h1>Redigera uppgift</h1>
+    <form method="POST">
+        <input type="text" name="task" value="{{ task['task'] }}">
+        <button type="submit">Spara</button>
+    </form>
+    <a href="/">Tillbaka</a>
+{% endblock %}
